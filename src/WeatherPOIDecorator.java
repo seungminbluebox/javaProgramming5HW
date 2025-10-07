@@ -1,40 +1,46 @@
 import java.util.Random;
 
-// Your Code!
-// POI의 위치에 따른 날씨 정보를 "장식"하는 데코레이터
+// yourcode
+// POI의 위치에 따른 날씨 정보를 추가
 public class WeatherPOIDecorator extends POIDecorator {
 
+    // 추가할 날씨 정보 저장
     private String weather;
 
+    // 생성자: 객체가 생성될 때 날씨 정보를 결정하여 저장
     public WeatherPOIDecorator(IPOI decoratedPOI) {
         super(decoratedPOI);
-        // 데코레이터가 생성될 때 날씨를 결정한다.
         this.weather = determineWeather();
     }
 
+    // 원본 정보 뒤에 날씨 정보를 덧붙여 반환
     @Override
     public String getInformation() {
-        // 기존 정보에 날씨 정보를 덧붙인다.
         return super.getInformation() + " [Weather: " + this.weather + "]";
     }
 
-    // 위치 좌표를 기반으로 날씨를 결정하는 private 헬퍼 메서드
+    // 날씨를 결정하는 내부 로직
     private String determineWeather() {
-        // 장식을 벗겨내고 원본 POI의 위치 정보를 가져온다.
+        // 원본 POI의 위치 정보를 가져옴
+        POI originalPOI = POIDecorator.unwrapPOI(this.decoratedPOI);
+        double lat = originalPOI.location.lat;
+        double lon = originalPOI.location.lon;
 
-        // 위도와 경도를 더한 값의 마지막 자리를 기준으로 날씨를 결정 (단순하지만 그럴듯한 방식)
-        Random rand = new Random();
-        int weatherType = rand.nextInt(3); // 0, 1, 2 중 하나의 값이 나옴
+        // 위도와 경도 값을 기반으로 seed를 생성하여, 같은 장소는 항상 같은 날씨가 나오도록 구현
+        long seed = (long) ((lat + lon) * 1000);
+        Random rand = new Random(seed);
+        int weatherType = rand.nextInt(3); // 0, 1, 2중 하나의 값 생성
 
+        // 결정된 타입에 따라 날씨 문자열 반환
         switch (weatherType) {
             case 0:
-                return "Sunny";
+                return "Sunny ☀️";
             case 1:
-                return "Cloudy";
+                return "Cloudy ☁️";
             case 2:
-                return "Rainy";
+                return "Rainy 🌧️";
             default:
-                return "none";
+                return "Partly Cloudy 🌥️";
         }
     }
 }

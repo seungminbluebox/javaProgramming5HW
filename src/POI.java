@@ -7,9 +7,9 @@ public class POI implements IPOI {
         this.location = location;
     }
 
+    // IPOI 인터페이스 구현: 가장 기본적인 정보(이름 + 위치)를 문자열로 반환
     @Override
     public String getInformation() {
-        // 가장 안쪽 객체의 정보를 반환한다.
         return name + " @ (" + location + ")";
     }
 
