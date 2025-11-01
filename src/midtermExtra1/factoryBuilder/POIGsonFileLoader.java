@@ -7,8 +7,6 @@ import java.util.List;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
-import midtermExtra1.observer.POI;
-
 import java.lang.reflect.Type;
 
 // JSON 파일을 읽어 POI 객체 리스트를 생성하는 유틸리티 클래스

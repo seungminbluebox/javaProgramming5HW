@@ -1,6 +1,5 @@
 package midtermExtra1.factoryBuilder;
 
-import midtermExtra1.observer.POI;
 import java.util.List;
 
 // Factory Method와 Builder 패턴 테스트

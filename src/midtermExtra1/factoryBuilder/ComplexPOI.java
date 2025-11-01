@@ -1,13 +1,11 @@
 package midtermExtra1.factoryBuilder;
 
 // POI(관심지점) 정보를 저장하는 클래스
+
 // 빌더 패턴으로 객체 생성
 // name, location, category, hashtags 등 다양한 속성 보유
 // 불변 객체로 구현
 
-import java.lang.reflect.Array;
-
-import midtermExtra1.observer.POI;
 import java.util.Arrays;
 
 public class ComplexPOI {

@@ -51,16 +51,4 @@ public class POIGsonFileLoader {
         }
         return null;
     }
-
-    private static final Gson GSON = new Gson();
-
-    private static String[] jsonArrayToStringArray(JsonArray array) {
-        if (array == null || array.size() == 0) {
-            return null;
-        }
-
-        Type stringArrayType = new TypeToken<String[]>() {
-        }.getType();
-        return GSON.fromJson(array, stringArrayType);
-    }
 }
